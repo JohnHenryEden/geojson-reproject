@@ -12,7 +12,7 @@ let sourceCrs = argv["source-crs"] || "4326"
 let targetCrs = argv["target-crs"] || "3857"
 let firstProjection = new proj4.Proj("EPSG:" + sourceCrs);
 let secondProjection = new proj4.Proj("EPSG:" + targetCrs);
-let encoding = "gb2312"
+let encoding = argv["encoding"] || "gb2312"
 console.log(argv)
 
 function readAllGeojsons(dir){
@@ -51,6 +51,7 @@ if(!dataDir){
 --data-dir 输出目录，可以是绝对目录或相对目录，必填
 --source-crs 源坐标系，EPSG编码，默认4326（WGS-84经纬度）
 --target-crs 目标坐标系，EPSG编码，默认3657（WGS-84墨卡托投影）
+--encoding 文件编码 默认gb2312
 --f 强制覆盖更新，否则以新名称命名文件
     `)
 }else {
